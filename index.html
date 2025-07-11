@@ -1,0 +1,322 @@
+<html><head>
+<meta charset="utf-8">
+<title>Frutinha do Pix</title>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+<meta property="og:title" content="FruitCash">
+<meta property="og:description" content="Jogue o jogo da frutinha e ganhe dinheiro">
+<meta property="og:image" content="assets/images/logo.png">
+
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-8E44SP2Z62"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8E44SP2Z62');
+</script>
+
+
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '559211402234703894');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=559211402234703894&ev=PageView&noscript=1"/></noscript>
+
+
+
+
+</head>
+<body>
+<div>
+<style>
+    body {
+        background-color: #FF005C;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+        font-family: sans-serif;
+    }
+
+    .w-container {
+        max-width: 440px;
+        background-color: white;
+        border-radius: 20px;
+        padding: 40px;
+        border: 8px solid #1f2024;
+        box-shadow: -15px 15px 0 0 #1f2024;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 40px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: 'right grotesk', sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: #1f2024;
+        letter-spacing: 2px;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    strong {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .playersOn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #1f2024;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        z-index: 9999;
+        transition: 1s;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    ul.playersOn {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    ul.playersOn li {
+        padding: 5px 0 5px;
+    }
+
+    ul.playersOn li img {
+        float: left;
+        width: 20px;
+        margin: 0 -150px 0 150px;
+        filter: drop-shadow(1px 1px 3px black);
+        transition: 4s;
+    }
+
+    ul.playersOn.ativo li img {
+        margin: 0 8px 0 0;
+    }
+
+    ul.playersOn li span {
+        display: block;
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    ul.playersOn li i {
+        display: block;
+        font-size: 10px;
+        margin-top: -6px;
+    }
+
+    .saldo{
+        margin-top: -130px;
+        margin-bottom: 10px;
+        box-shadow: -3px 3px 4px 0 rgba(0,0,0,0.5);
+        border-radius: 5px 5px 0 0;
+        width: 120px;
+    }
+    .saldoTitle {
+        font-size: 16px;
+        margin: 0;
+        background-color: #1FC2FF;
+        color: #fff;
+        border-radius: 5px 5px 0 0;
+        padding: 0 5px;
+        text-align: left;
+    }
+
+    .saldoValue {
+        font-size: 20px;
+        margin: 0;
+        background-color: #4F7280;
+        color: #fff;
+        padding: 0 5px;
+        text-align: left;
+    }
+
+    .submitBtn{
+        background-color: #fe1f4f;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 24px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 15px;
+        font-family: 'right grotesk', sans-serif;
+        font-weight: bold;
+        font-smooth: always;
+        box-shadow: -15px 3px 0 3px #1f2024;
+        letter-spacing: 2px;
+    }
+    
+    .submitBtn:hover {
+        transform: translate(10px, -10px);
+        box-shadow: -25px 13px 0 3px #1f2024;
+        background-color: #9f1331;
+        
+    }
+    </style>
+
+<section id="hero" class="hero-section dark wf-section">
+    <div class="saldo">
+        <p class="saldoTitle">Saldo:</p>
+        <p class="saldoValue">R$10,00</p>
+    </div>
+<style>
+            a.escudo {
+                display: block;
+                width: 247px;
+                line-height: 65px;
+                font-size: 12px;
+                margin: -60px 0 0px 0;
+                background-image: url(assets/images/escudo-branco.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                filter: drop-shadow(1px 1px 3px #00000099) hue-rotate(0deg);
+            }
+
+            a.escudo img {
+                width: 50px;
+                margin: -10px 0 0 0;
+            }
+
+            .containerPop {
+                border-style: solid;
+                border-width: 8px;
+                border-color: #1f2024;
+            }
+
+            .button2 {
+                background-color: #fe1f4f !important;
+                border: solid !important;
+                border-color: #1f2024 !important;
+                box-shadow: -3px 3px 0 0 #1f2024 !important;
+            }
+
+            .button2:hover{
+                box-shadow: -6px 6px 0 0 #1f2024 !important;
+            }
+
+            .testForm{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            </style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="minting-container w-container">
+<a href="#" class="escudo">
+
+<img src="assets/images/trophy.gif">
+
+</a>
+<h2>Cortar Frutas</h2>
+<p>Pronto para faturar cortando frutas? Cada corte é dinheiro no bolso! </p>
+<strong>⚠️ Não deixe nenhuma fruta cair</strong>
+                <strong>❌ Não colida com as bombas</strong>
+                <strong>✅ Saque imediatamente!</strong>
+
+
+<p style="margin-top: 20px;">Você tem 2 tentativas!
+
+    
+</p><form data-name="" id="play" method="post" aria-label="Form" action="../jogar">
+    <input type="hidden" name="_token" value="igEmooiyoBGJVycfLxpsmNq6bvUh1ussMUH4D57p" autocomplete="off" style=""><input type="hidden" name="_token" value="vmYl7uSIUvRRBXLjvgIcTJVTyqm0bBfegpnjAmNU" style="">
+<div class="properties testForm">
+    <input type="button" value="Iniciar Jogo" id="testar" onclick="irPara('jogar.html')" class="submitBtn" style=""><br><br>
+    
+    
+    <i style="font-size: 10px;">Teste agora o FruitPix!
+
+
+</i></div><i style="font-size: 10px;">
+
+
+
+
+<script>
+    function irPara(goFor){
+        location.href = goFor;
+    }
+</script>
+
+</i></form></div><i style="font-size: 10px;">
+<div id="wins" style="
+                display: block;
+                width: 240px;
+                font-size: 12px;
+                padding: 5px 0;
+                text-align: center;
+                line-height: 13px;
+                background-color: #FFC107;
+                border-radius: 10px;
+                border: 3px solid #1f2024;
+                box-shadow: -3px 3px 0 0px #1f2024;
+                margin: -24px auto 0 auto;
+                z-index: 1000;
+            ">Usuários Online<br>10334</div>
+</i></section><i style="font-size: 10px;"> 
+
+
+</i></div></body></html>
+
